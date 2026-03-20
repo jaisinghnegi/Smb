@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { syncStripeData } from '@/lib/connectors/stripe'
 
@@ -6,7 +6,7 @@ import { syncStripeData } from '@/lib/connectors/stripe'
  * POST /api/sync/stripe
  * Manually triggers a Stripe data re-sync for the authenticated user.
  */
-export async function POST(_request: NextRequest): Promise<NextResponse> {
+export async function POST(): Promise<NextResponse> {
   const supabase = await createClient()
   const {
     data: { user },
